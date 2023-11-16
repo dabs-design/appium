@@ -4,6 +4,8 @@ import IOS.Pages.FunFactPage;
 import IOS.Pages.Navigate;
 import org.testng.annotations.Test;
 
+import static Utilities.IOSUtilities.*;
+
 public class TestSuit1  extends BaseSetup{
 
     public TestSuit1() {
@@ -20,6 +22,7 @@ public class TestSuit1  extends BaseSetup{
         funFactPage.homeClick();
         funFactPage.funFactsClick();
         funFactPage.showRandomFactClick();
+        clickVolumeUP(super.iosDriver,1);
 
     }
 
