@@ -1,20 +1,19 @@
 package IOSTests;
-import io.appium.java_client.AppiumBy;
+import Utilities.ConfigUtils;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.options.XCUITestOptions;
-import org.openqa.selenium.By;
 import org.testng.ITestResult;
-import  Utilities.DriverUtilities;
+
 import java.lang.reflect.Method;
 import org.testng.annotations.*;
 
-import static Utilities.AppiumUtilities.*;
+import static Utilities.AppiumServer.*;
+import static Utilities.ConfigUtils.*;
+
 
 public class BaseSetup {
-    DriverUtilities driverUtilities;
     IOSDriver iosDriver;
     public BaseSetup() {
-         driverUtilities=new DriverUtilities();
+
     }
     @BeforeClass
     public void beforeAll() {
@@ -28,7 +27,8 @@ public class BaseSetup {
 
     @BeforeMethod
     public void beforeMethod(Method method) {
-        iosDriver = driverUtilities.createIOSAppiumDriver();
+        ConfigUtils.loadConfProp("ios/ios.properties");
+        iosDriver = ConfigUtils.getIOSDriver();
     }
 
     @AfterMethod

@@ -1,12 +1,13 @@
 package Utilities;
+
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 import java.net.URL;
-public class AppiumUtilities {
-    private static AppiumDriverLocalService localAppiumServer;
 
+public class AppiumServer {
+    private static AppiumDriverLocalService localAppiumServer;
     public static void startAppiumServer() {
         System.out.println(String.format("Start local Appium server"));
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
@@ -20,6 +21,7 @@ public class AppiumUtilities {
                 localAppiumServer.getUrl()
                         .toString()));
     }
+
 
     public static void stopAppiumServer() {
         if (null != localAppiumServer) {
