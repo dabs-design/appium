@@ -23,7 +23,8 @@ public class TestSuit1  extends BaseSetup{
         funFactPage.funFactsClick();
         funFactPage.showRandomFactClick();
         clickVolumeUP(super.iosDriver,1);
-
+        clickVolumeDown(super.iosDriver,1);
+        goHome(super.iosDriver);
     }
 
 

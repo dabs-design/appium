@@ -96,6 +96,7 @@ public class ConfigUtils {
             if(XCODE_ORG_ID!=null&& !XCODE_ORG_ID.isEmpty() && !XCODE_ORG_ID.isBlank())dc.setCapability(XCUITestOptions.XCODE_ORG_ID_OPTION, XCODE_ORG_ID);
             if(BUNDLE_ID!=null&& !BUNDLE_ID.isEmpty() && !BUNDLE_ID.isBlank())dc.setBundleId(BUNDLE_ID);
 
+
             return new IOSDriver(getAppiumServerUrl(), dc);
         } catch (Exception e) {
             System.out.println("Something went wrong (Loading IOS Driver)");

@@ -1,5 +1,7 @@
 package AndroidTests;
 import Utilities.ConfigUtils;
+import com.beust.ah.A;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.testng.ITestResult;
 
@@ -11,7 +13,7 @@ import static Utilities.ConfigUtils.*;
 
 
 public class BaseSetup {
-    IOSDriver iosDriver;
+    AndroidDriver androidDriver;
     public BaseSetup() {
 
     }
@@ -28,14 +30,14 @@ public class BaseSetup {
     @BeforeMethod
     public void beforeMethod(Method method) {
         ConfigUtils.loadConfProp("android/android.properties");
-        iosDriver = ConfigUtils.getIOSDriver();
+        androidDriver = ConfigUtils.getAndroidDriver();
     }
 
     @AfterMethod
     public void afterMethod(ITestResult result) {
-        if (null != iosDriver) {
+        if (null != androidDriver) {
             System.out.println("Close the driver");
-            iosDriver.quit();
+            androidDriver.quit();
         }
     }
 }

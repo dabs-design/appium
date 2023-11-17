@@ -15,4 +15,6 @@ public class FunFactPage extends Navigate{
     public void showRandomFactClick(){
         showRandomFact.click();
     }
+
+
 }

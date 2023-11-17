@@ -32,5 +32,4 @@ public  class IOSUtilities {
     public static void goHome(IOSDriver iosDriver){
             iosDriver.executeScript("mobile: pressButton", ImmutableMap.of("name", "home"));
     }
-
 }
