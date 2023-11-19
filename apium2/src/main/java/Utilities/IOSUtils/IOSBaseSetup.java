@@ -3,15 +3,22 @@ import Utilities.CommonUtils.ConfigUtils;
 import io.appium.java_client.ios.IOSDriver;
 import org.testng.ITestResult;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
+
 import org.testng.annotations.*;
 
 import static Utilities.CommonUtils.AppiumServer.*;
+import static Utilities.CommonUtils.LoadTestData.*;
 
 
 public class IOSBaseSetup {
     public IOSDriver iosDriver;
     public IOSUtilities iosUtilities;
+
+    public Map<String,Object> testDataFile;
+    public Map<String,String> testData;
     public IOSBaseSetup() {
 
     }
@@ -21,7 +28,8 @@ public class IOSBaseSetup {
         return this.iosDriver;
     }
     @BeforeClass
-    public void beforeAll() {
+    public void beforeAll() throws IOException {
+        testDataFile=loadJsonFromFile("ios/iosTestData.json");
         startAppiumServer();
     }
 

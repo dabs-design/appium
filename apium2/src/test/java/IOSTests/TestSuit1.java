@@ -43,8 +43,7 @@ public class TestSuit1  extends IOSBaseSetup {
 
         Log.allureLog("Started test");
         FunFactPage funFactPage =new FunFactPage(iosDriver);
-
-
+        Log.allureLog(testData.get("username"));
         Log.allureLog("1 getting WebElement and passing to iosActions");
         IOSUtilities.click(funFactPage.getFunFactsElement());
 

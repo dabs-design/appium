@@ -8,6 +8,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.util.Map;
+
 public class AllureTestNgListenerIOS extends  IOSBaseSetup implements ITestListener {
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -47,6 +49,9 @@ public class AllureTestNgListenerIOS extends  IOSBaseSetup implements ITestListe
     @Override
     public void onTestStart(ITestResult iTestResult) {
         Log.info(getTestMethodName(iTestResult) + " test is starting.");
+        Object testClass = iTestResult.getInstance();
+        ((IOSBaseSetup) testClass).testData=(Map<String, String>) ((IOSBaseSetup) testClass).testDataFile.get(getTestMethodName(iTestResult));
+
     }
 
     @Override
