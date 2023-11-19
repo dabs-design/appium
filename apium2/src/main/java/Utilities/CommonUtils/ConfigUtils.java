@@ -1,4 +1,4 @@
-package Utilities;
+package Utilities.CommonUtils;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -8,14 +8,12 @@ import io.appium.java_client.ios.options.XCUITestOptions;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Properties;
 
-import static Utilities.AppiumServer.getAppiumServerUrl;
+import static Utilities.CommonUtils.AppiumServer.getAppiumServerUrl;
 
 
 public class ConfigUtils {
-    private static final XCUITestOptions xcuiTestOptions = new XCUITestOptions();
     private static final Properties prop = new Properties();
     public static int EXPLICIT_WAIT_TIME;
     private static String APPIUM_PORT;
@@ -31,7 +29,6 @@ public class ConfigUtils {
     private static String BUNDLE_ID;
     private static String XCODE_SIGNING_ID;
     private static FileInputStream fis;
-    //public static TestConfigUtils testConfig =new TestConfigutils();
     private static String XCODE_ORG_ID;
     private static String AUTOMATION_NAME;
 

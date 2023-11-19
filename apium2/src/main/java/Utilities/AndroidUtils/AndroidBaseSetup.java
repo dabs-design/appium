@@ -1,20 +1,17 @@
-package AndroidTests;
-import Utilities.ConfigUtils;
-import com.beust.ah.A;
+package Utilities.AndroidUtils;
+import Utilities.CommonUtils.ConfigUtils;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import org.testng.ITestResult;
 
 import java.lang.reflect.Method;
 import org.testng.annotations.*;
 
-import static Utilities.AppiumServer.*;
-import static Utilities.ConfigUtils.*;
+import static Utilities.CommonUtils.AppiumServer.*;
 
 
-public class BaseSetup {
+public class AndroidBaseSetup {
     AndroidDriver androidDriver;
-    public BaseSetup() {
+    public AndroidBaseSetup() {
 
     }
     @BeforeClass
@@ -31,6 +28,7 @@ public class BaseSetup {
     public void beforeMethod(Method method) {
         ConfigUtils.loadConfProp("android/android.properties");
         androidDriver = ConfigUtils.getAndroidDriver();
+
     }
 
     @AfterMethod

@@ -1,0 +1,11 @@
+{
+  "testCase1": {
+    "user1": "dabsDesign1",
+    "password": "asdfgh1234567890"
+  },
+  "testCase2": {
+    "user1": "dabsDesign2",
+    "password": "asdfgh1234567890"
+  }
+
+}

@@ -1,42 +1,66 @@
 package IOSTests;
 
 import IOS.Pages.FunFactPage;
-import IOS.Pages.Navigate;
+import Utilities.IOSUtils.IOSBaseSetup;
+import Utilities.IOSUtils.IOSUtilities;
+import Utilities.Log.Log;
+import Utilities.ReportUtils.Listeners.AllureTestNgListenerIOS;
+import io.qameta.allure.*;
+import io.qameta.allure.testng.AllureTestNg;
+import org.testng.Reporter;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import java.lang.reflect.Method;
 
-import static Utilities.IOSUtilities.*;
+import static Utilities.ReportUtils.Listeners.AllureTestNgListenerIOS.*;
 
-public class TestSuit1  extends BaseSetup{
+@Listeners({ AllureTestNgListenerIOS.class })
+@Epic("Regression Tests")
+@Feature("Login Tests")
+public class TestSuit1  extends IOSBaseSetup {
 
-    public TestSuit1() {
 
-    }
-
-
-    @Test(testName = "my first Test")
+    @Test(priority = 0, description = "Invalid Login Scenario with wrong username and password.")
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Test Description: Login test with wrong username and wrong password.")
+    @Story("Invalid username and password login test")
     public void testcase1(){
-        FunFactPage funFactPage =new FunFactPage(super.iosDriver);
-        funFactPage.storyClick();
-        funFactPage.favoriteClick();
-        funFactPage.funFactsClick();
-        funFactPage.homeClick();
-        funFactPage.funFactsClick();
-        funFactPage.showRandomFactClick();
-        clickVolumeUP(super.iosDriver,1);
-        clickVolumeDown(super.iosDriver,1);
-        goHome(super.iosDriver);
+
+
+        FunFactPage funFactPage =new FunFactPage(iosDriver);
+        IOSUtilities.click(funFactPage.getStoryElement());
+        IOSUtilities.click(funFactPage.getFunFactsElement());
+        iosUtilities.goHome();
     }
 
 
-    @Test(testName = "my second Test")
+    @Test(priority = 1, description = " Login Scenario with  username and password.")
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Test Description: Login test with  username and  password.")
+    @Story(" username and password login test")
     public void testcase2(){
-        FunFactPage funFactPage =new FunFactPage(super.iosDriver);
-        funFactPage.storyClick();
-        funFactPage.favoriteClick();
-        funFactPage.funFactsClick();
-        funFactPage.homeClick();
-        funFactPage.funFactsClick();
-        funFactPage.showRandomFactClick();
+
+
+        Log.allureLog("Started test");
+        FunFactPage funFactPage =new FunFactPage(iosDriver);
+
+
+        Log.allureLog("1 getting WebElement and passing to iosActions");
+        IOSUtilities.click(funFactPage.getFunFactsElement());
+
+        Log.allureLog("2 getting By and passing to iosActions");
+        iosUtilities.click(FunFactPage.funFacts);
+        IOSUtilities.click(iosDriver, FunFactPage.funFacts);
+
+
+
+        Log.allureLog("3 getting WebElement and doing click operation directly");
+        funFactPage.getFunFactsElement().click();
+        IOSUtilities.takeScreenShot(iosDriver);
+        IOSUtilities.click(funFactPage.getStoryElement());
+        iosUtilities.goHome();
+
+
 
     }
 }

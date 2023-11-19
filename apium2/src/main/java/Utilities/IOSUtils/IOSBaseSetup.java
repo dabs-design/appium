@@ -1,19 +1,24 @@
-package IOSTests;
-import Utilities.ConfigUtils;
+package Utilities.IOSUtils;
+import Utilities.CommonUtils.ConfigUtils;
 import io.appium.java_client.ios.IOSDriver;
 import org.testng.ITestResult;
 
 import java.lang.reflect.Method;
 import org.testng.annotations.*;
 
-import static Utilities.AppiumServer.*;
-import static Utilities.ConfigUtils.*;
+import static Utilities.CommonUtils.AppiumServer.*;
 
 
-public class BaseSetup {
-    IOSDriver iosDriver;
-    public BaseSetup() {
+public class IOSBaseSetup {
+    public IOSDriver iosDriver;
+    public IOSUtilities iosUtilities;
+    public IOSBaseSetup() {
 
+    }
+
+
+    public IOSDriver getDriver(){
+        return this.iosDriver;
     }
     @BeforeClass
     public void beforeAll() {
@@ -29,6 +34,7 @@ public class BaseSetup {
     public void beforeMethod(Method method) {
         ConfigUtils.loadConfProp("ios/ios.properties");
         iosDriver = ConfigUtils.getIOSDriver();
+        iosUtilities=new IOSUtilities(iosDriver);
     }
 
     @AfterMethod

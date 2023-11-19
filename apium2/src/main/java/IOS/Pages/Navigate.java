@@ -1,43 +1,41 @@
 package IOS.Pages;
 
+import Utilities.CommonUtils.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.ios.IOSDriver;
-import org.openqa.selenium.support.FindBy;
 
-public class Navigate extends  PageObject {
+public class Navigate extends PageObject {
 
-        public Navigate(IOSDriver driver) {
+        public Navigate(IOSDriver iosDriver) {
 
-            super(driver);
+            super(iosDriver);
         }
 
-        @FindBy(xpath="//XCUIElementTypeButton[@name=\"Fun Facts\"]")
-        private WebElement funFacts;
+        public static By funFacts=By.xpath("//XCUIElementTypeButton[@name=\"Fun Facts\"]");
 
-        @FindBy(xpath="//XCUIElementTypeButton[@name=\"Home\"]")
-        private WebElement home;
+        public static By home =By.xpath("//XCUIElementTypeButton[@name=\"Home\"]");
 
-        @FindBy(xpath = "//XCUIElementTypeButton[@name=\"Favorites\"]")
-        private WebElement favorite;
+        public  static By favorite=By.xpath("//XCUIElementTypeButton[@name=\"Favorites\"]");
 
-        @FindBy(xpath = "//XCUIElementTypeButton[@name=\"Story\"]")
-        private WebElement story;
-
-
-
-        public void storyClick(){
-            story.click();
+        public  static  By storyElement=By.xpath("//XCUIElementTypeButton[@name=\"Story\"]");
+        public WebElement getStoryElement() {
+            return iosDriver.findElement(storyElement);
         }
 
-        public void favoriteClick(){
-            favorite.click();
+        public  WebElement getFunFactsElement() {
+             return iosDriver.findElement(funFacts);
         }
 
-        public void homeClick(){
-            home.click();
+        public  WebElement getHomeElement() {
+            return iosDriver.findElement(home);
         }
-        public void funFactsClick(){
-            funFacts.click();
+
+        public  WebElement getFavoriteElement() {
+            return iosDriver.findElement(favorite);
         }
+
+
+
 
 }
